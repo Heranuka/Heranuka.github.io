@@ -1,228 +1,211 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8" />
     <title>Резюме — Асхаб Хажиев</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-<header class="header">
-    <div class="container header__inner">
-        <div>
-            <h1 class="header__name">Асхаб Хажиев</h1>
-            <p class="header__position">Backend‑разработчик</p>
-        </div>
-        <div class="header__contacts">
-            <p>Тел: <a href="tel:+790249882286">+7 (902) 498 82 28</a></p>
-            <p>Telegram: <a href="https://t.me/Cazymo" target="_blank">@Cazymo</a></p>
-            <p>Email: <a href="mailto:retimixa@gmail.com">retimixa@gmail.com</a></p>
-            <p>GitHub: <a href="https://github.com/Heranuka" target="_blank">https://github.com/Heranuka</a></p>
-            <p>Город: Сургут, готов к переезду и удалёнке</p>
-        </div>
-    </div>
-</header>
+<div class="page">
+    <aside class="sidebar">
+        <div class="sidebar__inner">
+            <h1 class="sidebar__name">Асхаб Хажиев</h1>
+            <p class="sidebar__position">Backend‑разработчик</p>
 
-<main class="main container">
-
-    <section class="section">
-        <h2 class="section__title">
-            Опыт работы
-            <span id="experience-total"></span>
-        </h2>
-
-        <article class="item" data-start="2025-01" data-end="now">
-            <div class="item__meta">
-                <span>Январь 2025 — настоящее время</span>
+            <div class="sidebar__block">
+                <h2 class="sidebar__title">Контакты</h2>
+                <p>Тел: <a href="tel:+790249882286">+7 (902) 498 82 28</a></p>
+                <p>Telegram: <a href="https://t.me/Cazymo" target="_blank">@Cazymo</a></p>
+                <p>Email: <a href="mailto:retimixa@gmail.com">retimixa@gmail.com</a></p>
+                <p>GitHub: <a href="https://github.com/Heranuka" target="_blank">github.com/Heranuka</a></p>
+                <p>Сургут, готов к переезду и удалёнке</p>
             </div>
 
-            <div class="item__content">
-
-                <div class="item__header">
-                    <h3 class="item__title">Проектная деятельность — pet‑проекты</h3>
-                    <p class="item__position">Backend‑разработчик</p>
-                </div>
-
-                <div class="subitem">
-                    <h4 class="subitem__title">Delayed Notifier — сервис отложенных уведомлений</h4>
-                    <p class="subitem_subtitle">
-                        Разработал сервис для доставки уведомлений с управляемой задержкой и гарантией доставки.
-                    </p>
-                    <ul class="item__list">
-                        <li>Интегрировал RabbitMQ с плагином delayed message exchange для точного планирования отправки в заданное время.</li>
-                        <li>Внедрил механизм экспоненциального retry/backoff с настройкой DLX/Retry Queue для обработки временных ошибок.</li>
-                        <li>Реализовал поддержку нескольких каналов доставки (Email, Telegram) и возможность отмены уведомлений.</li>
-                        <li>Применил паттерн Worker для эффективной фоновой обработки очереди.</li>
-                    </ul>
-                    <p class="item__stack">Стек: Go, PostgreSQL, Redis, RabbitMQ, Docker.</p>
-                    <p class="subitem__link">
-                        <a href="https://github.com/Heranuka/DelayedNotifier" target="_blank">GitHub: delayed-notifier</a>
-                    </p>
-                </div>
-
-                <div class="subitem">
-                    <h4 class="subitem__title">Order Service — микросервис заказов</h4>
-                    <p class="subitem_subtitle">
-                        Создал микросервис с применением принципов Clean Architecture для четкого разделения бизнес-логики и инфраструктуры.
-                    </p>
-                    <ul class="item__list">
-                        <li>Разработал асинхронную доставку и обработку сообщений через брокер Apache Kafka.</li>
-                        <li>Организовал структуру слоев (domain, application, infrastructure) для независимого тестирования и масштабирования.</li>
-                    </ul>
-                    <p class="item__stack">Стек: Go, PostgreSQL, Kafka, Redis, Docker.</p>
-                    <p class="subitem__link">
-                        <a href="https://github.com/Heranuka/Order-Service-wb-0" target="_blank">GitHub: order-service</a>
-                    </p>
-                </div>
-
-                <div class="subitem">
-                    <h4 class="subitem__title">Image Processor — сервис обработки изображений</h4>
-                    <p class="subitem_subtitle">
-                        Разработал сервис для фоновой асинхронной обработки изображений с использованием очередей.
-                    </p>
-                    <ul class="item__list">
-                        <li>Интегрировал Apache Kafka для надежной передачи задач на обработку.</li>
-                        <li>Реализовал функции изменения размера (resize) и генерации миниатюр изображений.</li>
-                    </ul>
-                    <p class="item__stack">Стек: Go, PostgreSQL, Kafka, Docker.</p>
-                    <p class="subitem__link">
-                        <a href="https://github.com/Heranuka/ImageProcessor" target="_blank">GitHub: image-processor</a>
-                    </p>
-                </div>
-
-                <div class="subitem">
-                    <h4 class="subitem__title">Warehouse Control — система управления складом</h4>
-                    <p class="subitem_subtitle">
-                        Создал мини-систему учета запасов с фокусом на безопасность, аудит и контроль доступа.
-                    </p>
-                    <ul class="item__list">
-                        <li>Внедрил JWT-авторизацию с ролевым контролем доступа (RBAC) для трех уровней пользователей.</li>
-                        <li>Реализовал полное логирование истории изменений и действий пользователей.</li>
-                    </ul>
-                    <p class="item__stack">Стек: Go, PostgreSQL, JWT, Docker.</p>
-                    <p class="subitem__link">
-                        <a href="https://github.com/Heranuka/WarehouseControl" target="_blank">GitHub: warehouse-control</a>
-                    </p>
-                </div>
-
-                <div class="subitem">
-                    <h4 class="subitem__title">Comment Tree — сервис древовидных комментариев</h4>
-                    <p class="subitem_subtitle">
-                        Разработал сервис для работы с иерархическими структурами данных комментариев.
-                    </p>
-                    <ul class="item__list">
-                        <li>Внедрил эффективную логику хранения и выборки древовидных комментариев.</li>
-                        <li>Реализовал пагинацию, сортировку и полнотекстовый поиск для работы с большими объемами данных.</li>
-                    </ul>
-                    <p class="item__stack">Стек: Go, PostgreSQL, Docker.</p>
-                    <p class="subitem__link">
-                        <a href="https://github.com/Heranuka/CommentTree-Service" target="_blank">GitHub: comment-tree</a>
-                    </p>
-                </div>
-
-            </div>
-        </article>
-    </section>
-
-    <section class="section">
-        <h2 class="section__title">Образование</h2>
-        <h3 class="section__subtitle">Среднее специальное</h3>
-        <article class="item">
-            <div class="item__meta">
-                <span>2023</span>
-            </div>
-
-            <div class="item__content">
-                <h3 class="item__title">Сургутский колледж предпринимательства</h3>
-            </div>
-        </article>
-    </section>
-
-    <section class="section">
-        <h2 class="section__title">Курсы</h2>
-        <article class="item">
-            <div class="item__meta">
-                <span>2025</span>
-            </div>
-
-            <div class="item__content">
-                <h3 class="item__title">«Горутиновый Golang»</h3>
-                <p>WBTECH Техношкола</p>
-            </div>
-        </article>
-    </section>
-
-    <section class="section">
-        <h2 class="section__title">Навыки</h2>
-        <article class="item item__skills">
-
-            <div class="subitem">
-                <div class="item__meta">
-                    <span>Знание языков</span>
-                </div>
-                <ul class="item__list">
-                    <li>
-                        Русский
-                        <span class="language-level">— родной</span>
-                    </li>
-                    <li>
-                        Английский
-                        <span class="language-level">— B2 — средний</span>
-                    </li>
-                    <li>
-                        Арабский
-                        <span class="language-level">— A2 — базовый</span>
-                    </li>
+            <div class="sidebar__block">
+                <h2 class="sidebar__title">Языки</h2>
+                <ul class="sidebar__list">
+                    <li>Русский — родной</li>
+                    <li>Английский — B2</li>
+                    <li>Арабский — A2</li>
                 </ul>
             </div>
 
-            <div class="subitem">
+            <div class="sidebar__block">
+                <h2 class="sidebar__title">Навыки</h2>
+                <div class="tags">
+                    <span class="tag">Golang</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">REST API</span>
+                    <span class="tag">Redis</span>
+                    <span class="tag">Kafka</span>
+                    <span class="tag">RabbitMQ</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">JWT</span>
+                    <span class="tag">Unit Testing</span>
+                    <span class="tag">Clean Architecture</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <section class="section">
+            <h2 class="section__title">
+                Опыт работы
+                <span id="experience-total"></span>
+            </h2>
+
+            <article class="item" data-start="2024-06" data-end="now">
                 <div class="item__meta">
-                    <span>Навыки</span>
+                    <span>Июнь 2024 — настоящее время</span>
                 </div>
 
                 <div class="item__content">
-                    <div class="tags">
-                        <span class="tag">Golang</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">REST API</span>
-                        <span class="tag">Redis</span>
-                        <span class="tag">Kafka</span>
-                        <span class="tag">RabbitMQ</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Linux</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">JWT</span>
-                        <span class="tag">Unit Testing</span>
-                        <span class="tag">Clean Architecture</span>
+
+                    <div class="item__header">
+                        <h3 class="item__title">Проектная деятельность — pet‑проекты и фриланс</h3>
+                        <p class="item__position">Backend‑разработчик</p>
                     </div>
+
+                    <div class="subitem">
+                        <h4 class="subitem__title">Delayed Notifier — сервис планирования уведомлений</h4>
+                        <p class="subitem_subtitle">
+                            Разработал сервис для отправки уведомлений по расписанию с контролем статуса доставки и повторными попытками.
+                        </p>
+                        <ul class="item__list">
+                            <li>Настроил использование RabbitMQ с плагином delayed message exchange для запуска уведомлений точно в заданный момент.</li>
+                            <li>Спроектировал механизм повторных отправок с увеличивающимся интервалом через DLX и отдельные retry‑очереди.</li>
+                            <li>Реализовал несколько каналов доставки (Email, Telegram) и управление жизненным циклом уведомлений: создание, перенос, отмена.</li>
+                            <li>Организовал обработку задач воркерами с учётом лимитов по количеству одновременных запросов к внешним сервисам.</li>
+                            <li>Добавил базовые метрики и логирование для отслеживания статуса доставки и проблемных сообщений.</li>
+                        </ul>
+                        <p class="item__stack">Стек: Go, PostgreSQL, Redis, RabbitMQ, Docker.</p>
+                        <p class="subitem__link">
+                            <a href="https://github.com/Heranuka/DelayedNotifier" target="_blank">GitHub: delayed-notifier</a>
+                        </p>
+                    </div>
+
+                    <div class="subitem">
+                        <h4 class="subitem__title">Order Service — микросервис управления заказами</h4>
+                        <p class="subitem_subtitle">
+                            Спроектировал и реализовал сервис обработки заказов с акцентом на разделение доменной логики и инфраструктуры.
+                        </p>
+                        <ul class="item__list">
+                            <li>Реализовал обмен доменными событиями по Apache Kafka для связи сервиса заказов с платежами и складом.</li>
+                            <li>Разделил код на уровни domain, application и infrastructure, что позволило писать модульные тесты без поднятия внешних сервисов.</li>
+                            <li>Описал контракт взаимодействия через чёткие DTO и явные topic’и, что упростило интеграцию с другими командами.</li>
+                            <li>Настроил конфигурацию и подключение к Kafka и БД через переменные окружения и Docker‑компоуз.</li>
+                        </ul>
+                        <p class="item__stack">Стек: Go, PostgreSQL, Kafka, Redis, Docker.</p>
+                        <p class="subitem__link">
+                            <a href="https://github.com/Heranuka/Order-Service-wb-0" target="_blank">GitHub: order-service</a>
+                        </p>
+                    </div>
+
+                    <div class="subitem">
+                        <h4 class="subitem__title">Image Processor — сервис фоновой обработки изображений</h4>
+                        <p class="subitem_subtitle">
+                            Сконструировал сервис, который асинхронно обрабатывает изображения и подготавливает их для дальнейшего использования.
+                        </p>
+                        <ul class="item__list">
+                            <li>Использовал Apache Kafka для очередей заданий на обработку изображений и разгрузки основного API.</li>
+                            <li>Реализовал операции изменения размера и генерации превью с сохранением артефактов в персистентное хранилище.</li>
+                            <li>Отделил слой обработки от слоя приёма запросов, чтобы можно было масштабировать воркеры независимо.</li>
+                            <li>Добавил валидацию входных данных (формат, размер файлов) и обработку типичных ошибок чтения/записи.</li>
+                        </ul>
+                        <p class="item__stack">Стек: Go, PostgreSQL, Kafka, Docker.</p>
+                        <p class="subitem__link">
+                            <a href="https://github.com/Heranuka/ImageProcessor" target="_blank">GitHub: image-processor</a>
+                        </p>
+                    </div>
+
+                    <div class="subitem">
+                        <h4 class="subitem__title">Warehouse Control — система учёта складских операций</h4>
+                        <p class="subitem_subtitle">
+                            Реализовал компактную систему управления запасами с прозрачным аудитом действий пользователей.
+                        </p>
+                        <ul class="item__list">
+                            <li>Настроил аутентификацию по JWT и разграничение прав через роли (администратор, менеджер, сотрудник склада).</li>
+                            <li>Сделал детальный журнал действий: кто, когда и какие изменения внёс в карточки товаров и остатки.</li>
+                            <li>Спроектировал модель данных так, чтобы поддерживать историю изменений по складам и пользователям.</li>
+                            <li>Реализовал базовые защитные механизмы: ограничение по числу запросов и валидацию входных данных на уровне API.</li>
+                        </ul>
+                        <p class="item__stack">Стек: Go, PostgreSQL, JWT, Docker.</p>
+                        <p class="subitem__link">
+                            <a href="https://github.com/Heranuka/WarehouseControl" target="_blank">GitHub: warehouse-control</a>
+                        </p>
+                    </div>
+
+                    <div class="subitem">
+                        <h4 class="subitem__title">Comment Tree — сервис иерархических комментариев</h4>
+                        <p class="subitem_subtitle">
+                            Разработал сервис для хранения и выборки вложенных комментариев с фокусом на производительность запросов.
+                        </p>
+                        <ul class="item__list">
+                            <li>Выбрал схему хранения древовидных комментариев, позволяющую эффективно работать с вложенными ветками.</li>
+                            <li>Оптимизировал выборки для сценариев: загрузка ветки, получение последних комментариев, вывод длинных тредов с пагинацией.</li>
+                            <li>Добавил сортировку и поиск по тексту, чтобы было проще работать с большими лентами обсуждений.</li>
+                            <li>Продумал API так, чтобы им было удобно пользоваться как фронтенду, так и внешним сервисам.</li>
+                        </ul>
+                        <p class="item__stack">Стек: Go, PostgreSQL, Docker.</p>
+                        <p class="subitem__link">
+                            <a href="https://github.com/Heranuka/CommentTree-Service" target="_blank">GitHub: comment-tree</a>
+                        </p>
+                    </div>
+
                 </div>
-            </div>
+            </article>
+        </section>
 
-        </article>
-    </section>
+        <section class="section">
+            <h2 class="section__title">Образование</h2>
+            <article class="item">
+                <div class="item__meta">
+                    <span>2023</span>
+                </div>
+                <div class="item__content">
+                    <h3 class="item__title">Сургутский колледж предпринимательства</h3>
+                    <p class="item__position">Среднее специальное образование</p>
+                </div>
+            </article>
+        </section>
 
-    <section class="section">
-        <h2 class="section__title">Дополнительная информация</h2>
-        <article class="item">
-            <div class="item__meta">
-                <span>О себе</span>
-            </div>
+        <section class="section">
+            <h2 class="section__title">Курсы</h2>
+            <article class="item">
+                <div class="item__meta">
+                    <span>2025</span>
+                </div>
+                <div class="item__content">
+                    <h3 class="item__title">«Горутиновый Golang»</h3>
+                    <p>WBTECH Техношкола</p>
+                </div>
+            </article>
+        </section>
 
-            <div class="item__content">
-                <p>
-                    Backend‑разработчик на Go. Интересуюсь распределёнными системами,
-                    очередями сообщений и построением надёжных сервисов.
-                </p>
-            </div>
-        </article>
-    </section>
+        <section class="section">
+            <h2 class="section__title">Дополнительная информация</h2>
+            <article class="item">
+                <div class="item__meta">
+                    <span>О себе</span>
+                </div>
+                <div class="item__content">
+                    <p>
+                        Backend‑разработчик на Go. Интересуюсь построением отказоустойчивых и наблюдаемых сервисов,
+                        распределёнными системами и очередями сообщений. Нравится постепенно улучшать архитектуру:
+                        выносить бизнес‑логику из инфраструктуры, покрывать критичные части тестами и упрощать поддержку.
+                    </p>
+                </div>
+            </article>
+        </section>
 
-</main>
+    </main>
+</div>
 
 <script src="script.js"></script>
 </body>
-
 </html>
