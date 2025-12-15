@@ -59,7 +59,7 @@
                 <span id="experience-total"></span>
             </h2>
 
-            <article class="item" data-start="2024-06" data-end="now">
+            <article class="item" data-start="2025-01" data-end="now">
                 <div class="item__meta">
                     <span>Июнь 2024 — настоящее время</span>
                 </div>
@@ -67,62 +67,29 @@
                 <div class="item__content">
 
                     <div class="item__header">
-                        <h3 class="item__title">Проектная деятельность — pet‑проекты и фриланс</h3>
+                        <h3 class="item__title">Проектная деятельность — pet‑проекты</h3>
                         <p class="item__position">Backend‑разработчик</p>
                     </div>
 
+                    <!-- 1. Comment Tree -->
                     <div class="subitem">
-                        <h4 class="subitem__title">Delayed Notifier — сервис планирования уведомлений</h4>
+                        <h4 class="subitem__title">Comment Tree — сервис иерархических комментариев</h4>
                         <p class="subitem_subtitle">
-                            Разработал сервис для отправки уведомлений по расписанию с контролем статуса доставки и повторными попытками.
+                            Разработал сервис для хранения и выборки вложенных комментариев с фокусом на производительность запросов.
                         </p>
                         <ul class="item__list">
-                            <li>Настроил использование RabbitMQ с плагином delayed message exchange для запуска уведомлений точно в заданный момент.</li>
-                            <li>Спроектировал механизм повторных отправок с увеличивающимся интервалом через DLX и отдельные retry‑очереди.</li>
-                            <li>Реализовал несколько каналов доставки (Email, Telegram) и управление жизненным циклом уведомлений: создание, перенос, отмена.</li>
-                            <li>Организовал обработку задач воркерами с учётом лимитов по количеству одновременных запросов к внешним сервисам.</li>
-                            <li>Добавил базовые метрики и логирование для отслеживания статуса доставки и проблемных сообщений.</li>
+                            <li>Выбрал схему хранения древовидных комментариев, позволяющую эффективно работать с вложенными ветками.</li>
+                            <li>Оптимизировал выборки для сценариев: загрузка ветки, получение последних комментариев, вывод длинных тредов с пагинацией.</li>
+                            <li>Добавил сортировку и поиск по тексту, чтобы было проще работать с большими лентами обсуждений.</li>
+                            <li>Продумал API так, чтобы им было удобно пользоваться как фронтенду, так и внешним сервисам.</li>
                         </ul>
-                        <p class="item__stack">Стек: Go, PostgreSQL, Redis, RabbitMQ, Docker.</p>
+                        <p class="item__stack">Стек: Go, PostgreSQL, Docker.</p>
                         <p class="subitem__link">
-                            <a href="https://github.com/Heranuka/DelayedNotifier" target="_blank">GitHub: delayed-notifier</a>
+                            <a href="https://github.com/Heranuka/CommentTree-Service" target="_blank">GitHub: comment-tree</a>
                         </p>
                     </div>
 
-                    <div class="subitem">
-                        <h4 class="subitem__title">Order Service — микросервис управления заказами</h4>
-                        <p class="subitem_subtitle">
-                            Спроектировал и реализовал сервис обработки заказов с акцентом на разделение доменной логики и инфраструктуры.
-                        </p>
-                        <ul class="item__list">
-                            <li>Реализовал обмен доменными событиями по Apache Kafka для связи сервиса заказов с платежами и складом.</li>
-                            <li>Разделил код на уровни domain, application и infrastructure, что позволило писать модульные тесты без поднятия внешних сервисов.</li>
-                            <li>Описал контракт взаимодействия через чёткие DTO и явные topic’и, что упростило интеграцию с другими командами.</li>
-                            <li>Настроил конфигурацию и подключение к Kafka и БД через переменные окружения и Docker‑компоуз.</li>
-                        </ul>
-                        <p class="item__stack">Стек: Go, PostgreSQL, Kafka, Redis, Docker.</p>
-                        <p class="subitem__link">
-                            <a href="https://github.com/Heranuka/Order-Service-wb-0" target="_blank">GitHub: order-service</a>
-                        </p>
-                    </div>
-
-                    <div class="subitem">
-                        <h4 class="subitem__title">Image Processor — сервис фоновой обработки изображений</h4>
-                        <p class="subitem_subtitle">
-                            Сконструировал сервис, который асинхронно обрабатывает изображения и подготавливает их для дальнейшего использования.
-                        </p>
-                        <ul class="item__list">
-                            <li>Использовал Apache Kafka для очередей заданий на обработку изображений и разгрузки основного API.</li>
-                            <li>Реализовал операции изменения размера и генерации превью с сохранением артефактов в персистентное хранилище.</li>
-                            <li>Отделил слой обработки от слоя приёма запросов, чтобы можно было масштабировать воркеры независимо.</li>
-                            <li>Добавил валидацию входных данных (формат, размер файлов) и обработку типичных ошибок чтения/записи.</li>
-                        </ul>
-                        <p class="item__stack">Стек: Go, PostgreSQL, Kafka, Docker.</p>
-                        <p class="subitem__link">
-                            <a href="https://github.com/Heranuka/ImageProcessor" target="_blank">GitHub: image-processor</a>
-                        </p>
-                    </div>
-
+                    <!-- 2. Warehouse Control -->
                     <div class="subitem">
                         <h4 class="subitem__title">Warehouse Control — система учёта складских операций</h4>
                         <p class="subitem_subtitle">
@@ -140,20 +107,58 @@
                         </p>
                     </div>
 
+                    <!-- 3. Image Processor -->
                     <div class="subitem">
-                        <h4 class="subitem__title">Comment Tree — сервис иерархических комментариев</h4>
+                        <h4 class="subitem__title">Image Processor — сервис фоновой обработки изображений</h4>
                         <p class="subitem_subtitle">
-                            Разработал сервис для хранения и выборки вложенных комментариев с фокусом на производительность запросов.
+                            Сконструировал сервис, который асинхронно обрабатывает изображения и подготавливает их для дальнейшего использования.
                         </p>
                         <ul class="item__list">
-                            <li>Выбрал схему хранения древовидных комментариев, позволяющую эффективно работать с вложенными ветками.</li>
-                            <li>Оптимизировал выборки для сценариев: загрузка ветки, получение последних комментариев, вывод длинных тредов с пагинацией.</li>
-                            <li>Добавил сортировку и поиск по тексту, чтобы было проще работать с большими лентами обсуждений.</li>
-                            <li>Продумал API так, чтобы им было удобно пользоваться как фронтенду, так и внешним сервисам.</li>
+                            <li>Использовал Apache Kafka для очередей заданий на обработку изображений и разгрузки основного API.</li>
+                            <li>Реализовал операции изменения размера и генерации превью с сохранением артефактов в персистентное хранилище.</li>
+                            <li>Отделил слой обработки от слоя приёма запросов, чтобы можно было масштабировать воркеры независимо.</li>
+                            <li>Добавил валидацию входных данных (формат, размер файлов) и обработку типичных ошибок чтения/записи.</li>
                         </ul>
-                        <p class="item__stack">Стек: Go, PostgreSQL, Docker.</p>
+                        <p class="item__stack">Стек: Go, PostgreSQL, Kafka, Docker.</p>
                         <p class="subitem__link">
-                            <a href="https://github.com/Heranuka/CommentTree-Service" target="_blank">GitHub: comment-tree</a>
+                            <a href="https://github.com/Heranuka/ImageProcessor" target="_blank">GitHub: image-processor</a>
+                        </p>
+                    </div>
+
+                    <!-- 4. Order Service -->
+                    <div class="subitem">
+                        <h4 class="subitem__title">Order Service — микросервис управления заказами</h4>
+                        <p class="subitem_subtitle">
+                            Спроектировал и реализовал сервис обработки заказов с акцентом на разделение доменной логики и инфраструктуры.
+                        </p>
+                        <ul class="item__list">
+                            <li>Реализовал обмен доменными событиями по Apache Kafka для связи сервиса заказов с платежами и складом.</li>
+                            <li>Разделил код на уровни domain, application и infrastructure, что позволило писать модульные тесты без поднятия внешних сервисов.</li>
+                            <li>Описал контракт взаимодействия через чёткие DTO и явные topic’и, что упростило интеграцию с другими командами.</li>
+                            <li>Настроил конфигурацию и подключение к Kafka и БД через переменные окружения и Docker‑компоуз.</li>
+                        </ul>
+                        <p class="item__stack">Стек: Go, PostgreSQL, Kafka, Redis, Docker.</p>
+                        <p class="subitem__link">
+                            <a href="https://github.com/Heranuka/Order-Service-wb-0" target="_blank">GitHub: order-service</a>
+                        </p>
+                    </div>
+
+                    <!-- 5. Delayed Notifier -->
+                    <div class="subitem">
+                        <h4 class="subitem__title">Delayed Notifier — сервис планирования уведомлений</h4>
+                        <p class="subitem_subtitle">
+                            Разработал сервис для отправки уведомлений по расписанию с контролем статуса доставки и повторными попытками.
+                        </p>
+                        <ul class="item__list">
+                            <li>Настроил использование RabbitMQ с плагином delayed message exchange для запуска уведомлений точно в заданный момент.</li>
+                            <li>Спроектировал механизм повторных отправок с увеличивающимся интервалом через DLX и отдельные retry‑очереди.</li>
+                            <li>Реализовал несколько каналов доставки (Email, Telegram) и управление жизненным циклом уведомлений: создание, перенос, отмена.</li>
+                            <li>Организовал обработку задач воркерами с учётом лимитов по количеству одновременных запросов к внешним сервисам.</li>
+                            <li>Добавил базовые метрики и логирование для отслеживания статуса доставки и проблемных сообщений.</li>
+                        </ul>
+                        <p class="item__stack">Стек: Go, PostgreSQL, Redis, RabbitMQ, Docker.</p>
+                        <p class="subitem__link">
+                            <a href="https://github.com/Heranuka/DelayedNotifier" target="_blank">GitHub: delayed-notifier</a>
                         </p>
                     </div>
 
